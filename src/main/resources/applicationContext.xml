@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<util:properties id="settings" location="classpath:/instagram.properties"/>
+
+	<bean id="fromInstagram" class="ru.uoles.proj.service.InstagramServiceImpl" />
+	<bean id="toInstagram" class="ru.uoles.proj.service.InstagramServiceImpl" />
+
+	<bean id="property" class="ru.uoles.proj.model.Property">
+		<property name="fromUsername" value="#{settings['account.fromUsername']}" />
+		<property name="fromPassword" value="#{settings['account.fromPassword']}" />
+		<property name="toUsername" value="#{settings['account.toUsername']}" />
+		<property name="toPassword" value="#{settings['account.toPassword']}" />
+	</bean>
+ </beans>
